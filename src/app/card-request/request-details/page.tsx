@@ -9,6 +9,7 @@ import SuccessModal from "@/modals/successModal";
 import {useDataContext} from "@/services/context";
 import {getStatusColor} from "@/utils/getStatusColor";
 import {Button} from "@mui/material";
+import {useSearchParams} from "next/navigation";
 import {useState} from "react";
 import {TextFieldElement, useForm} from "react-hook-form-mui";
 interface RequestDetailsProps {
@@ -21,7 +22,7 @@ interface RequestDetailsProps {
 }
 const RequestDetails = () => {
   const {requests} = useDataContext();
-  const id = new URLSearchParams(window.location.search).get("id");
+  const id = useSearchParams().get("id");
   const currentRequest = requests.find((request) => request.id === Number(id));
 
   const [status, setStatus] = useState("pending");

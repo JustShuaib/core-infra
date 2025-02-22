@@ -11,6 +11,7 @@ import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import "dayjs/locale/en";
 import {DataProvider} from "@/services/context";
+import {Suspense} from "react";
 
 dayjs.locale("en");
 
@@ -47,13 +48,15 @@ export default function RootLayout({
       <ThemeProvider theme={theme}>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DataProvider>
-            <body className={`${satoshi.className} antialiased flex`}>
-              <Sidebar />
-              <div className="flex-1">
-                <TopBar />
-                {children}
-              </div>
-            </body>
+            <Suspense fallback={<div>Loading...</div>}>
+              <body className={`${satoshi.className} antialiased flex`}>
+                <Sidebar />
+                <div className="flex-1">
+                  <TopBar />
+                  {children}
+                </div>
+              </body>
+            </Suspense>
           </DataProvider>
         </LocalizationProvider>
       </ThemeProvider>
