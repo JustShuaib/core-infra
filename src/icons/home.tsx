@@ -1,4 +1,4 @@
-const Home = ({stroke}: {stroke: string}) => {
+const Home = ({stroke}: {stroke?: string}) => {
   return (
     <svg
       width="16"
