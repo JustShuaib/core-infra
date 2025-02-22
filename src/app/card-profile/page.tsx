@@ -36,7 +36,7 @@ const CardProfile = () => {
       {
         accessorKey: "id",
         header: "Action",
-        Cell: ({cell}) => (
+        Cell: () => (
           <div className="flex gap-x-3 items-center">
             <IconButton>
               <Trash />
